@@ -1,4 +1,4 @@
-package astar.theorically.Models;
+package Models;
 
 public record PathEdge(
     Stop fromStop,

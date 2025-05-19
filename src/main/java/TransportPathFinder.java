@@ -1,13 +1,11 @@
-package astar.theorically;
-
-import astar.theorically.Algorithm.Astar;
-import astar.theorically.Models.PathEdge;
-import astar.theorically.Models.Stop;
-import astar.theorically.Models.Trip;
-import astar.theorically.Parser.Parser;
-import astar.theorically.Utils.Helper;
-import astar.theorically.Utils.Heuristic;
-import astar.theorically.Utils.Profiles;
+import Algorithm.Astar;
+import Models.PathEdge;
+import Models.Stop;
+import Models.Trip;
+import Parser.Parser;
+import Utils.Helper;
+import Utils.Heuristic;
+import Utils.Profiles;
 import java.util.*;
 
 public class TransportPathFinder {

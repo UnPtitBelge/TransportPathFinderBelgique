@@ -1,8 +1,8 @@
-package astar.theorically.Parser;
+package Parser;
 
-import astar.theorically.Models.Route;
-import astar.theorically.Models.Stop;
-import astar.theorically.Models.Trip;
+import Models.Route;
+import Models.Stop;
+import Models.Trip;
 import java.util.Map;
 
 public class Parser {

@@ -1,0 +1,12 @@
+trip,distance(km),travel_time,nodes_expanded
+"Alveringem Nieuwe Herberg" -> "Aubange","273,2",06:55:00,58521
+"Brugge" -> "Brussel","48,1",00:22:54,4060
+"Antwerpen" -> "Gent","52,8",00:57:59,5394
+"Bruxelles-Midi" -> "Bruxelles-Central","1,8",00:04:00,53
+"Paris Nord" -> "Amsterdam Cs","428,4",15:08:00,64334
+"schuman" -> "simonis","4,3",00:12:34,738
+"etterbeek" -> "schaerbeek","5,9",00:15:00,1311
+"genk" -> "ostende","171,1",00:44:49,1941
+"liege" -> "namur","55,4",01:11:00,22188
+"delta" -> "aubange","170,9",03:55:00,52506
+"ulb" -> "rogier","5,0",00:19:22,1237

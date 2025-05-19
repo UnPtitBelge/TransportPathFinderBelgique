@@ -1,14 +1,14 @@
-package astar.theorically.Algorithm;
+package Algorithm;
 
 import algs4.IndexMinPQ;
-import astar.theorically.Models.Neighbour;
-import astar.theorically.Models.PathEdge;
-import astar.theorically.Models.Stop;
-import astar.theorically.Models.Trip;
-import astar.theorically.Utils.Helper;
-import astar.theorically.Utils.Heuristic;
-import astar.theorically.Utils.Profiles;
 import java.util.*;
+import Models.Neighbour;
+import Models.PathEdge;
+import Models.Stop;
+import Models.Trip;
+import Utils.Helper;
+import Utils.Heuristic;
+import Utils.Profiles;
 
 /**
  * Implements the A* pathfinding algorithm for a transit map.

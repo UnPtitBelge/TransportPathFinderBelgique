@@ -1,4 +1,4 @@
-package astar.theorically.Models;
+package Models;
 
 import java.util.*;
 

@@ -1,7 +1,7 @@
-package astar.theorically.Utils;
+package Utils;
 
-import astar.theorically.Models.Stop;
-import astar.theorically.Models.Trip;
+import Models.Stop;
+import Models.Trip;
 
 import java.util.ArrayList;
 import java.util.List;

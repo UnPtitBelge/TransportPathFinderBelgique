@@ -1,26 +1,26 @@
-package astar.theorically.Parser;
+package Parser;
 
+import Models.Neighbour;
+import Models.Route;
+import Models.Stop;
+import Models.Trip;
+import Utils.Helper;
+import Utils.Profiles;
 import com.github.davidmoten.rtree.Entries;
 import com.github.davidmoten.rtree.Entry;
 import com.github.davidmoten.rtree.RTree;
 import com.github.davidmoten.rtree.geometry.Geometries;
 import com.github.davidmoten.rtree.geometry.Point;
-import astar.theorically.Models.Neighbour;
-import astar.theorically.Models.Route;
-import astar.theorically.Models.Stop;
-import astar.theorically.Models.Trip;
-import astar.theorically.Utils.Helper;
-import astar.theorically.Utils.Profiles;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class StopParser {
 
     private static final List<String> PATHS = List.of(
-        "GTFS/DELIJN/stops.csv",
-        "GTFS/SNCB/stops.csv",
-        "GTFS/STIB/stops.csv",
-        "GTFS/TEC/stops.csv"
+        "src/main/resources/GTFS/DELIJN/stops.csv",
+        "src/main/resources/GTFS/SNCB/stops.csv",
+        "src/main/resources/GTFS/STIB/stops.csv",
+        "src/main/resources/GTFS/TEC/stops.csv"
     );
 
     private static final Trip WALK_TRIP = new Trip(
@@ -40,7 +40,13 @@ public class StopParser {
             double lat = Double.parseDouble(row[2].trim());
             double lon = Double.parseDouble(row[3].trim());
 
-            Stop stop = new Stop(stopId, stopName, lat, lon, counter.getAndIncrement());
+            Stop stop = new Stop(
+                stopId,
+                stopName,
+                lat,
+                lon,
+                counter.getAndIncrement()
+            );
             container.put(stopId, stop);
         });
 
@@ -61,9 +67,7 @@ public class StopParser {
         return stops;
     }
 
-    private static void buildWalkableConnections(
-        Collection<Stop> allStops
-    ) {
+    private static void buildWalkableConnections(Collection<Stop> allStops) {
         int count = 0;
         for (Stop stop : allStops) {
             String operator = Profiles.getOperatorFromStopId(stop.id());
@@ -91,13 +95,17 @@ public class StopParser {
                     double distance = Helper.distance(stop, candidate);
                     if (distance <= radius) {
                         double travelTime = distance / Profiles.getWalkSpeed();
-                        stop.neighbours().add( new Neighbour(
-                            candidate,
-                            WALK_TRIP,
-                            -1,
-                            (int) travelTime,
-                                true
-                        ));
+                        stop
+                            .neighbours()
+                            .add(
+                                new Neighbour(
+                                    candidate,
+                                    WALK_TRIP,
+                                    -1,
+                                    (int) travelTime,
+                                    true
+                                )
+                            );
                         count++;
                     }
                 }

@@ -1,19 +1,19 @@
-package astar_benchmark;
+package Benchmark;
 
-import astar.theorically.Algorithm.Astar;
-import astar.theorically.Models.PathEdge;
-import astar.theorically.Models.Stop;
-import astar.theorically.Models.Trip;
-import astar.theorically.Parser.Parser;
-import astar.theorically.Utils.Helper;
-import astar.theorically.Utils.Heuristic;
-
+import Algorithm.Astar;
+import Models.PathEdge;
+import Models.Stop;
+import Models.Trip;
+import Parser.Parser;
+import Utils.Helper;
+import Utils.Heuristic;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 public class HeuristicTests {
+
     public static void main(String[] args) {
         boolean dijkstra = false;
 
@@ -33,25 +33,46 @@ public class HeuristicTests {
         List<Stop> selectedStops = stopList.subList(0, nbPairs * 2);
 
         for (int i = 0; i < nbPairs; i++) {
-            Stop departureStop = Helper.findStopByName(selectedStops.get(i * 2).name(), stops);
-            Stop arrivalStop = Helper.findStopByName(selectedStops.get(i * 2 + 1).name(), stops);
+            Stop departureStop = Helper.findStopByName(
+                selectedStops.get(i * 2).name(),
+                stops
+            );
+            Stop arrivalStop = Helper.findStopByName(
+                selectedStops.get(i * 2 + 1).name(),
+                stops
+            );
             if (departureStop == null || arrivalStop == null) {
                 System.out.println("Invalid stop names.");
                 return;
             }
-            List<PathEdge> result = validateHeuristic(departureStop, arrivalStop, departureTime, stops);
+            List<PathEdge> result = validateHeuristic(
+                departureStop,
+                arrivalStop,
+                departureTime,
+                stops
+            );
             printPathSegments(result, departureTime);
         }
     }
 
-    public static boolean isAdmissibleHeuristic(Stop n, Stop d, int departureTime, Map<String, Stop> stops) {
+    public static boolean isAdmissibleHeuristic(
+        Stop n,
+        Stop d,
+        int departureTime,
+        Map<String, Stop> stops
+    ) {
         double hN = Heuristic.heuristic(n, d);
         double realCost = calculateRealCost(n, d, departureTime, stops);
         System.out.println("Heuristic: " + hN + " vs " + realCost);
         return hN <= realCost;
     }
 
-    public static double calculateRealCost(Stop start, Stop end, int departureTime, Map<String, Stop> stops) {
+    public static double calculateRealCost(
+        Stop start,
+        Stop end,
+        int departureTime,
+        Map<String, Stop> stops
+    ) {
         Astar astar = new Astar(stops.size(), stops);
         Heuristic.setDijkstraMode(true);
         List<PathEdge> result = astar.searchPath(start, end, departureTime);
@@ -62,16 +83,27 @@ public class HeuristicTests {
         return Double.POSITIVE_INFINITY;
     }
 
-    public static List<PathEdge> validateHeuristic(Stop start, Stop end, int departureTime, Map<String, Stop> stops) {
+    public static List<PathEdge> validateHeuristic(
+        Stop start,
+        Stop end,
+        int departureTime,
+        Map<String, Stop> stops
+    ) {
         Astar astar = new Astar(stops.size(), stops);
         Heuristic.setDijkstraMode(true);
-        List<PathEdge> optimalPath = astar.searchPath(start, end, departureTime);
+        List<PathEdge> optimalPath = astar.searchPath(
+            start,
+            end,
+            departureTime
+        );
         Heuristic.setDijkstraMode(false);
         if (optimalPath == null || optimalPath.isEmpty()) {
             System.out.println("No optimal path found");
             return optimalPath;
         }
-        System.out.println("Optimal stops expanded: " + astar.getStopsExpanded());
+        System.out.println(
+            "Optimal stops expanded: " + astar.getStopsExpanded()
+        );
         boolean isAdmissibleHeuristic = true;
         boolean isConsistentHeuristic = true;
         for (PathEdge node : optimalPath) {
@@ -80,7 +112,12 @@ public class HeuristicTests {
             int travelTime = node.arrival() - node.departureTime();
             double hN = Heuristic.heuristic(to, end);
             double hP = Heuristic.heuristic(from, end);
-            double realCost = calculateRealCost(to, end, node.departureTime(), stops);
+            double realCost = calculateRealCost(
+                to,
+                end,
+                node.departureTime(),
+                stops
+            );
 
             if (hN > travelTime + hP) {
                 isConsistentHeuristic = false;
@@ -94,8 +131,8 @@ public class HeuristicTests {
     }
 
     public static void printPathSegments(
-            List<PathEdge> result,
-            int departureTime
+        List<PathEdge> result,
+        int departureTime
     ) {
         if (result == null) {
             System.out.println("No path found.");
@@ -129,15 +166,15 @@ public class HeuristicTests {
                 continue;
             }
             if (
-                    !isSameTrip(currentTrip, trip) ||
-                            isCorrespondance(fromStop, toStop, isWalking)
+                !isSameTrip(currentTrip, trip) ||
+                isCorrespondance(fromStop, toStop, isWalking)
             ) {
                 printSegmentLine(
-                        currentTrip,
-                        segmentStart,
-                        segmentEnd,
-                        segmentDepartureTime,
-                        segmentArrivalTime
+                    currentTrip,
+                    segmentStart,
+                    segmentEnd,
+                    segmentDepartureTime,
+                    segmentArrivalTime
                 );
                 currentTrip = trip;
                 segmentStart = fromStop;
@@ -147,45 +184,45 @@ public class HeuristicTests {
             segmentArrivalTime = edgeArrivalTime;
         }
         boolean isWalking =
-                currentTrip != null && currentTrip.id().equals("WALK");
+            currentTrip != null && currentTrip.id().equals("WALK");
         if (!isCorrespondance(segmentStart, segmentEnd, isWalking)) {
             printSegmentLine(
-                    currentTrip,
-                    segmentStart,
-                    segmentEnd,
-                    segmentDepartureTime,
-                    segmentArrivalTime
+                currentTrip,
+                segmentStart,
+                segmentEnd,
+                segmentDepartureTime,
+                segmentArrivalTime
             );
         }
         int totalJourneyTime = segmentArrivalTime - departureTime;
         System.out.println(
-                "\nTotal journey time: " +
-                        Helper.convertSecondsToTime(totalJourneyTime) +
-                        " (" +
-                        (totalJourneyTime / 60) +
-                        " minutes)"
+            "\nTotal journey time: " +
+            Helper.convertSecondsToTime(totalJourneyTime) +
+            " (" +
+            (totalJourneyTime / 60) +
+            " minutes)"
         );
     }
 
     private static void printSegmentLine(
-            Trip trip,
-            Stop from,
-            Stop to,
-            int departureTime,
-            int arrivalTime
+        Trip trip,
+        Stop from,
+        Stop to,
+        int departureTime,
+        int arrivalTime
     ) {
         String transport = trip == null ? "WALK" : trip.route().transportType();
         String routeName = trip == null ? "" : trip.route().name();
 
         System.out.printf(
-                "%s | %s | %s → %s | Depart: %s, Arrive: %s, Duration: %d min\n",
-                transport,
-                routeName,
-                from.name(),
-                to.name(),
-                Helper.convertSecondsToTime(departureTime),
-                Helper.convertSecondsToTime(arrivalTime),
-                (arrivalTime - departureTime) / 60
+            "%s | %s | %s → %s | Depart: %s, Arrive: %s, Duration: %d min\n",
+            transport,
+            routeName,
+            from.name(),
+            to.name(),
+            Helper.convertSecondsToTime(departureTime),
+            Helper.convertSecondsToTime(arrivalTime),
+            (arrivalTime - departureTime) / 60
         );
     }
 
@@ -196,9 +233,9 @@ public class HeuristicTests {
     }
 
     public static boolean isCorrespondance(
-            Stop from,
-            Stop to,
-            boolean isWalking
+        Stop from,
+        Stop to,
+        boolean isWalking
     ) {
         if (isWalking && from.name().equalsIgnoreCase(to.name())) {
             return true;

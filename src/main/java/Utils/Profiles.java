@@ -1,6 +1,6 @@
-package astar.theorically.Utils;
+package Utils;
 
-import astar.theorically.Models.Trip;
+import Models.Trip;
 import java.util.HashMap;
 import java.util.Map;
 

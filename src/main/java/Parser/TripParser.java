@@ -1,8 +1,7 @@
-package astar.theorically.Parser;
+package Parser;
 
-import astar.theorically.Models.Route;
-import astar.theorically.Models.Trip;
-
+import Models.Route;
+import Models.Trip;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,10 +9,10 @@ import java.util.Map;
 public class TripParser {
 
     private static final List<String> PATHS = List.of(
-            "GTFS/DELIJN/trips.csv",
-            "GTFS/SNCB/trips.csv",
-            "GTFS/STIB/trips.csv",
-            "GTFS/TEC/trips.csv"
+        "src/main/resources/GTFS/DELIJN/trips.csv",
+        "src/main/resources/GTFS/SNCB/trips.csv",
+        "src/main/resources/GTFS/STIB/trips.csv",
+        "src/main/resources/GTFS/TEC/trips.csv"
     );
 
     public static Map<String, Trip> parseAllTrips(Map<String, Route> routes) {

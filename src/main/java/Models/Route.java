@@ -1,4 +1,4 @@
-package astar.theorically.Models;
+package Models;
 
 public record Route(String id, String name, String longName, String transportType) {
     /**

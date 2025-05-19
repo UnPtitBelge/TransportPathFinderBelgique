@@ -1,12 +1,11 @@
-package astar_benchmark;
+package Benchmark;
 
-import astar.theorically.Algorithm.Astar;
-import astar.theorically.Models.PathEdge;
-import astar.theorically.Models.Stop;
-import astar.theorically.Parser.Parser;
-import astar.theorically.Utils.Helper;
-import astar.theorically.Utils.Heuristic;
-
+import Algorithm.Astar;
+import Models.PathEdge;
+import Models.Stop;
+import Parser.Parser;
+import Utils.Helper;
+import Utils.Heuristic;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,7 +30,7 @@ public class Analysis {
     public static void main(String[] args) {
         boolean dijkstra = false;
         boolean random = false;
-        String csvPath = "src/test/resources/analysis.csv";
+        String csvPath = "src/main/resources/benchmark/analysis.csv";
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
@@ -56,12 +55,11 @@ public class Analysis {
         try {
             if (dijkstra) {
                 Heuristic.setDijkstraMode(true);
-            } else if (random){
+            } else if (random) {
                 exportPathsToCSV(stops, csvPath);
                 return;
             }
             exportPathsToCSVStatic(stops, csvPath);
-
         } catch (IOException e) {
             System.err.println("Error writing to CSV: " + e.getMessage());
         }
@@ -74,7 +72,9 @@ public class Analysis {
         List<Stop> stopList = new ArrayList<>(allStops.values());
         Collections.shuffle(stopList);
         if (stopList.size() < 120) {
-            throw new IllegalArgumentException("Il faut au moins 120 arrêts pour ce benchmark.");
+            throw new IllegalArgumentException(
+                "Il faut au moins 120 arrêts pour ce benchmark."
+            );
         }
         List<Stop> selectedStops = stopList.subList(0, 120);
 
@@ -88,7 +88,6 @@ public class Analysis {
                 from = Helper.findStopByName(from.name(), allStops);
                 to = Helper.findStopByName(to.name(), allStops);
                 Astar astar = new Astar(allStops.size(), allStops);
-
 
                 List<PathEdge> pathResult = astar.searchPath(
                     from,
@@ -124,9 +123,7 @@ public class Analysis {
         String path
     ) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
-            writer.write(
-                "trip,distance(km),travel_time,nodes_expanded\n"
-            );
+            writer.write("trip,distance(km),travel_time,nodes_expanded\n");
             int departureTime = Helper.convertTimeToSeconds("08:00:00");
 
             Heuristic.setDijkstraMode(true);

@@ -42,7 +42,7 @@ import java.util.NoSuchElementException;
  *  @param <Key> the generic type of key on this priority queue
  */
 public class IndexMinPQ<Key extends Comparable<Key>>
-    implements Iterable<Integer> {
+        implements Iterable<Integer> {
 
     private int maxN; // maximum number of elements on PQ
     private int n; // number of elements on PQ
@@ -111,7 +111,7 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     public void insert(int i, Key key) {
         validateIndex(i);
         if (contains(i)) throw new IllegalArgumentException(
-            "index is already in the priority queue"
+                "index is already in the priority queue"
         );
         n++;
         qp[i] = n;
@@ -128,7 +128,7 @@ public class IndexMinPQ<Key extends Comparable<Key>>
      */
     public int minIndex() {
         if (n == 0) throw new NoSuchElementException(
-            "Priority queue underflow"
+                "Priority queue underflow"
         );
         return pq[1];
     }
@@ -141,7 +141,7 @@ public class IndexMinPQ<Key extends Comparable<Key>>
      */
     public Key minKey() {
         if (n == 0) throw new NoSuchElementException(
-            "Priority queue underflow"
+                "Priority queue underflow"
         );
         return keys[pq[1]];
     }
@@ -153,7 +153,7 @@ public class IndexMinPQ<Key extends Comparable<Key>>
      */
     public int delMin() {
         if (n == 0) throw new NoSuchElementException(
-            "Priority queue underflow"
+                "Priority queue underflow"
         );
         int min = pq[1];
         exch(1, n--);
@@ -176,7 +176,7 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     public Key keyOf(int i) {
         validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException(
-            "index is not in the priority queue"
+                "index is not in the priority queue"
         );
         else return keys[i];
     }
@@ -192,7 +192,7 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     public void changeKey(int i, Key key) {
         validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException(
-            "index is not in the priority queue"
+                "index is not in the priority queue"
         );
         keys[i] = key;
         swim(qp[i]);
@@ -224,13 +224,13 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     public void decreaseKey(int i, Key key) {
         validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException(
-            "index is not in the priority queue"
+                "index is not in the priority queue"
         );
         if (keys[i].compareTo(key) == 0) throw new IllegalArgumentException(
-            "Calling decreaseKey() with a key equal to the key in the priority queue"
+                "Calling decreaseKey() with a key equal to the key in the priority queue"
         );
         if (keys[i].compareTo(key) < 0) throw new IllegalArgumentException(
-            "Calling decreaseKey() with a key strictly greater than the key in the priority queue"
+                "Calling decreaseKey() with a key strictly greater than the key in the priority queue"
         );
         keys[i] = key;
         swim(qp[i]);
@@ -248,13 +248,13 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     public void increaseKey(int i, Key key) {
         validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException(
-            "index is not in the priority queue"
+                "index is not in the priority queue"
         );
         if (keys[i].compareTo(key) == 0) throw new IllegalArgumentException(
-            "Calling increaseKey() with a key equal to the key in the priority queue"
+                "Calling increaseKey() with a key equal to the key in the priority queue"
         );
         if (keys[i].compareTo(key) > 0) throw new IllegalArgumentException(
-            "Calling increaseKey() with a key strictly less than the key in the priority queue"
+                "Calling increaseKey() with a key strictly less than the key in the priority queue"
         );
         keys[i] = key;
         sink(qp[i]);
@@ -270,7 +270,7 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     public void delete(int i) {
         validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException(
-            "index is not in the priority queue"
+                "index is not in the priority queue"
         );
         int index = qp[i];
         exch(index, n--);
@@ -283,10 +283,10 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     // throw an IllegalArgumentException if i is an invalid index
     private void validateIndex(int i) {
         if (i < 0) throw new IllegalArgumentException(
-            "index is negative: " + i
+                "index is negative: " + i
         );
         if (i >= maxN) throw new IllegalArgumentException(
-            "index >= capacity: " + i
+                "index >= capacity: " + i
         );
     }
 
@@ -374,16 +374,16 @@ public class IndexMinPQ<Key extends Comparable<Key>>
     public static void main(String[] args) {
         // insert a bunch of strings
         String[] strings = {
-            "it",
-            "was",
-            "the",
-            "best",
-            "of",
-            "times",
-            "it",
-            "was",
-            "the",
-            "worst",
+                "it",
+                "was",
+                "the",
+                "best",
+                "of",
+                "times",
+                "it",
+                "was",
+                "the",
+                "worst",
         };
 
         IndexMinPQ<String> pq = new IndexMinPQ<String>(strings.length);

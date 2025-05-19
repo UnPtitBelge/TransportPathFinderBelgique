@@ -62,63 +62,50 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>run-speed_benchmark</id>
+                        <id>run-benchmark-speed</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass
-                            >astar_benchmark.SpeedBenchmark</mainClass>
+                            <mainClass>Benchmark.SpeedBenchmark</mainClass>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>run-simple_benchmark</id>
+                        <id>run-benchmark-profile</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>astar_benchmark.Analysis</mainClass>
+                            <mainClass>Benchmark.ProfileBenchmark</mainClass>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>run-profile_benchmark</id>
+                        <id>run-benchmark-analysis</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass
-                            >astar_benchmark.ProfileBenchmark</mainClass>
+                            <mainClass>Benchmark.Analysis</mainClass>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>run-analysis</id>
+                        <id>run-benchmark-heuristic</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>astar_benchmark.Analysis</mainClass>
+                            <mainClass>Benchmark.HeuristicTests</mainClass>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>run-heuristic_tests</id>
+                        <id>run-path_finder</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass
-                            >astar_benchmark.HeuristicTests</mainClass>
+                            <mainClass>TransportPathFinder</mainClass>
                         </configuration>
                     </execution>
-                    <execution>
-                                        <id>run-transport_path_finder</id>
-                                        <goals>
-                                            <goal>java</goal>
-                                        </goals>
-                                        <configuration>
-                                            <mainClass
-                            >astar.theorically.TransportPathFinder</mainClass>
-                                        </configuration>
-                                    </execution>
                 </executions>
             </plugin>
         </plugins>

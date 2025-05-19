@@ -1,11 +1,6 @@
-package astar.theorically.Utils;
+package Utils;
 
-import astar.theorically.Algorithm.Astar;
-import astar.theorically.Models.PathEdge;
-import astar.theorically.Models.Stop;
-
-import java.util.List;
-import java.util.Map;
+import Models.Stop;
 
 public class Heuristic {
 
@@ -26,7 +21,7 @@ public class Heuristic {
 
     public static double heuristic(Stop stop1, Stop stop2) {
         if (dijkstraMode) return 0;
-//        double speed = 4.63*Math.pow(Helper.distance(stop1, stop2),0.39);
+        //        double speed = 4.63*Math.pow(Helper.distance(stop1, stop2),0.39);
         return Helper.distance(stop1, stop2) / speed;
     }
 
@@ -38,6 +33,4 @@ public class Heuristic {
         }
         return hN;
     }
-
-
 }

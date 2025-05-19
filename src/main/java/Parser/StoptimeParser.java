@@ -1,18 +1,18 @@
-package astar.theorically.Parser;
+package Parser;
 
-import astar.theorically.Models.Neighbour;
-import astar.theorically.Models.Stop;
-import astar.theorically.Models.Trip;
-import astar.theorically.Utils.Helper;
+import Models.Neighbour;
+import Models.Stop;
+import Models.Trip;
+import Utils.Helper;
 import java.util.*;
 
 public class StoptimeParser {
 
     private static final List<String> PATHS = List.of(
-        "GTFS/DELIJN/stop_times.csv",
-        "GTFS/SNCB/stop_times.csv",
-        "GTFS/STIB/stop_times.csv",
-        "GTFS/TEC/stop_times.csv"
+        "src/main/resources/GTFS/DELIJN/stop_times.csv",
+        "src/main/resources/GTFS/SNCB/stop_times.csv",
+        "src/main/resources/GTFS/STIB/stop_times.csv",
+        "src/main/resources/GTFS/TEC/stop_times.csv"
     );
 
     public static void parseAllStopTimes(
@@ -85,13 +85,16 @@ public class StoptimeParser {
 
                 current
                     .stop()
-                    .neighbours().add( new Neighbour(
-                        next.stop(),
-                        trip,
-                        current.departure(),
-                        cost,
-                        false
-                    ));
+                    .neighbours()
+                    .add(
+                        new Neighbour(
+                            next.stop(),
+                            trip,
+                            current.departure(),
+                            cost,
+                            false
+                        )
+                    );
             }
         }
     }
