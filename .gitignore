@@ -1,0 +1,6 @@
+GTFS/
+target/
+.project
+.classpath
+.settings/
+.idea/

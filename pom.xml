@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>matteo</groupId>
+    <artifactId>Algo-Project</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.univocity</groupId>
+            <artifactId>univocity-parsers</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.davidmoten</groupId>
+            <artifactId>rtree</artifactId>
+            <version>0.12</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>run-speed_benchmark</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass
+                            >astar_benchmark.SpeedBenchmark</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>run-simple_benchmark</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>astar_benchmark.Analysis</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>run-profile_benchmark</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass
+                            >astar_benchmark.ProfileBenchmark</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>run-analysis</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>astar_benchmark.Analysis</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>run-heuristic_tests</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass
+                            >astar_benchmark.HeuristicTests</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                                        <id>run-transport_path_finder</id>
+                                        <goals>
+                                            <goal>java</goal>
+                                        </goals>
+                                        <configuration>
+                                            <mainClass
+                            >astar.theorically.TransportPathFinder</mainClass>
+                                        </configuration>
+                                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
