@@ -7,62 +7,65 @@
  *
  ******************************************************************************/
 
-package algs4;
+package algo_2.algs4;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 /**
- *  The {@code StdOut} class provides static methods for printing strings
- *  and numbers to standard output.
+ * The {@code StdOut} class provides static methods for printing strings
+ * and numbers to standard output.
  *
- *  <p><b>Getting started.</b>
- *  To use this class, you must have {@code StdOut.class} in your
- *  Java classpath. If you used our autoinstaller, you should be all set.
- *  Otherwise, either download
- *  <a href = "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
- *  and add to your Java classpath or download
- *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
- *  and put a copy in your working directory.
- *  <p>
- *  Here is an example program that uses {@code StdOut}:
- *  <pre>
- *   public class TestStdOut {
- *       public static void main(String[] args) {
- *           int a = 17;
- *           int b = 23;
- *           int sum = a + b;
- *           StdOut.println("Hello, World");
- *           StdOut.printf("%d + %d = %d\n", a, b, sum);
- *       }
- *   }
- *  </pre>
- *  <p>
- *  <b>Differences with System.out.</b>
- *  The behavior of {@code StdOut} is similar to that of {@link System#out},
- *  but there are a few technical differences:
- *  <ul>
- *  <li> {@code StdOut} coerces the character-set encoding to UTF-8,
- *       which is a standard character encoding for Unicode.
- *  <li> {@code StdOut} coerces the locale to {@link Locale#US},
- *       for consistency with {@link StdIn}, {@link Double#parseDouble(String)},
- *       and floating-point literals.
- *  <li> {@code StdOut} <em>flushes</em> standard output after each call to
- *       {@code print()} so that text will appear immediately in the terminal.
- *  </ul>
- *  <p>
- *  <b>Reference.</b>
- *  For additional documentation,
- *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
- *  <em>Computer Science: An Interdisciplinary Approach</em>
- *  by Robert Sedgewick and Kevin Wayne.
+ * <p>
+ * <b>Getting started.</b>
+ * To use this class, you must have {@code StdOut.class} in your
+ * Java classpath. If you used our autoinstaller, you should be all set.
+ * Otherwise, either download
+ * <a href =
+ * "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
+ * and add to your Java classpath or download
+ * <a href =
+ * "https://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
+ * and put a copy in your working directory.
+ * <p>
+ * Here is an example program that uses {@code StdOut}:
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * <pre>
+ * public class TestStdOut {
+ *     public static void main(String[] args) {
+ *         int a = 17;
+ *         int b = 23;
+ *         int sum = a + b;
+ *         StdOut.println("Hello, World");
+ *         StdOut.printf("%d + %d = %d\n", a, b, sum);
+ *     }
+ * }
+ * </pre>
+ * <p>
+ * <b>Differences with System.out.</b>
+ * The behavior of {@code StdOut} is similar to that of {@link System#out},
+ * but there are a few technical differences:
+ * <ul>
+ * <li>{@code StdOut} coerces the character-set encoding to UTF-8,
+ * which is a standard character encoding for Unicode.
+ * <li>{@code StdOut} coerces the locale to {@link Locale#US},
+ * for consistency with {@link StdIn}, {@link Double#parseDouble(String)},
+ * and floating-point literals.
+ * <li>{@code StdOut} <em>flushes</em> standard output after each call to
+ * {@code print()} so that text will appear immediately in the terminal.
+ * </ul>
+ * <p>
+ * <b>Reference.</b>
+ * For additional documentation,
+ * see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ * <em>Computer Science: An Interdisciplinary Approach</em>
+ * by Robert Sedgewick and Kevin Wayne.
+ *
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public final class StdOut {
 
@@ -78,13 +81,13 @@ public final class StdOut {
     // this is called before invoking any methods
     static {
         out = new PrintWriter(
-            new OutputStreamWriter(System.out, CHARSET),
-            true
-        );
+                new OutputStreamWriter(System.out, CHARSET),
+                true);
     }
 
     // don't instantiate
-    private StdOut() {}
+    private StdOut() {
+    }
 
     /**
      * Terminates the current line by printing the line-separator string.
@@ -278,7 +281,9 @@ public final class StdOut {
      * string and arguments, and then flushes standard output.
      *
      *
-     * @param format the <a href = "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format string</a>
+     * @param format the <a href =
+     *               "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format
+     *               string</a>
      * @param args   the arguments accompanying the format string
      */
     public static void printf(String format, Object... args) {
@@ -291,7 +296,9 @@ public final class StdOut {
      * the specified format string and arguments; then flushes standard output.
      *
      * @param locale the locale
-     * @param format the <a href = "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format string</a>
+     * @param format the <a href =
+     *               "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format
+     *               string</a>
      * @param args   the arguments accompanying the format string
      */
     public static void printf(Locale locale, String format, Object... args) {
@@ -313,25 +320,25 @@ public final class StdOut {
     }
 }
 /******************************************************************************
- *  Copyright 2002-2025, Robert Sedgewick and Kevin Wayne.
+ * Copyright 2002-2025, Robert Sedgewick and Kevin Wayne.
  *
- *  This file is part of algs4.jar, which accompanies the textbook
+ * This file is part of algs4.jar, which accompanies the textbook
  *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
+ * Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
+ * Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
+ * http://algs4.cs.princeton.edu
  *
  *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * algs4.jar is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * algs4.jar is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
+ * You should have received a copy of the GNU General Public License
+ * along with algs4.jar. If not, see http://www.gnu.org/licenses.
  ******************************************************************************/
