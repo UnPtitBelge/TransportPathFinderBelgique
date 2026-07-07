@@ -1,113 +1,79 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd"
->
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-        </repository>
-    </repositories>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
+  <groupId>com.ulb</groupId>
+  <artifactId>simplified-path-finder-belgium</artifactId>
+  <version>0.1-SNAPSHOT</version>
 
-    <modelVersion>4.0.0</modelVersion>
+  <properties>
+    <java.version>25</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
-    <groupId>matteo</groupId>
-    <artifactId>Algo-Project</artifactId>
-    <version>1.0-SNAPSHOT</version>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Maven Central</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+  </repositories>
 
-    <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+  <dependencies>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.univocity</groupId>
-            <artifactId>univocity-parsers</artifactId>
-            <version>2.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.davidmoten</groupId>
-            <artifactId>rtree</artifactId>
-            <version>0.12</version>
-        </dependency>
-    </dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>run-benchmark-speed</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>Benchmark.SpeedBenchmark</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>run-benchmark-profile</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>Benchmark.ProfileBenchmark</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>run-benchmark-analysis</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>Benchmark.Analysis</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>run-benchmark-heuristic</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>Benchmark.HeuristicTests</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>run-path_finder</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>TransportPathFinder</mainClass>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-csv</artifactId>
+        <version>1.11.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.5.6</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>${java.version}</release>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>run-main</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.ulb.Main</mainClass>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
 </project>
