@@ -1,0 +1,44 @@
+02:27:42.871 [com.ulb.Main.main()] INFO  com.ulb.util.Profiler - Environnement: 16 coeurs disponibles, mémoire max 3326 MB
+02:27:42.877 [com.ulb.Main.main()] DEBUG com.ulb.util.Profiler - > total
+02:27:42.878 [com.ulb.Main.main()] DEBUG com.ulb.util.Profiler - > parseAll
+02:27:42.879 [com.ulb.Main.main()] DEBUG com.ulb.util.Profiler - > parseRoads
+02:27:42.881 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/STIB/routes.csv
+02:27:42.901 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - STIB: 90 routes chargées
+02:27:42.902 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/TEC/routes.csv
+02:27:42.911 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - TEC: 909 routes chargées
+02:27:42.912 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/SNCB/routes.csv
+02:27:42.916 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - SNCB: 921 routes chargées
+02:27:42.917 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/DELIJN/routes.csv
+02:27:42.941 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - DELIJN: 3416 routes chargées
+02:27:42.942 [com.ulb.Main.main()] INFO  com.ulb.parser.Parser - Total routes chargées: 5336
+02:27:42.942 [com.ulb.Main.main()] INFO  com.ulb.util.Profiler - < parseRoads — 62 ms (mémoire: +2 MB)
+02:27:42.943 [com.ulb.Main.main()] DEBUG com.ulb.util.Profiler - > parseStops
+02:27:42.943 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/STIB/stops.csv
+02:27:42.968 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - STIB: 2811 arrêts chargés
+02:27:42.969 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/TEC/stops.csv
+02:27:43.072 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - TEC: 31405 arrêts chargés
+02:27:43.073 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/SNCB/stops.csv
+02:27:43.080 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - SNCB: 2670 arrêts chargés
+02:27:43.081 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/DELIJN/stops.csv
+02:27:43.148 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - DELIJN: 30749 arrêts chargés
+02:27:43.149 [com.ulb.Main.main()] INFO  com.ulb.parser.Parser - Total arrêts chargés: 67635
+02:27:43.149 [com.ulb.Main.main()] INFO  com.ulb.util.Profiler - < parseStops — 206 ms (mémoire: +33 MB)
+02:27:43.150 [com.ulb.Main.main()] DEBUG com.ulb.util.Profiler - > parseTrips
+02:27:43.150 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/STIB/trips.csv
+02:27:43.253 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - STIB: 78687 trajets chargés
+02:27:43.254 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/TEC/trips.csv
+02:27:43.422 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - TEC: 138964 trajets chargés
+02:27:43.422 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/SNCB/trips.csv
+02:27:43.468 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - SNCB: 37352 trajets chargés
+02:27:43.469 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/DELIJN/trips.csv
+02:27:43.841 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - DELIJN: 364319 trajets chargés
+02:27:43.842 [com.ulb.Main.main()] INFO  com.ulb.parser.Parser - Total trajets chargés: 619322
+02:27:43.842 [com.ulb.Main.main()] INFO  com.ulb.util.Profiler - < parseTrips — 692 ms (mémoire: +57 MB)
+02:27:43.842 [com.ulb.Main.main()] DEBUG com.ulb.util.Profiler - > parseStopTimes
+02:27:43.842 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/STIB/stop_times.csv
+02:27:45.931 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - STIB: 1619434 horaires chargés
+02:27:45.931 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/TEC/stop_times.csv
+02:27:51.909 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - TEC: 4232152 horaires chargés
+02:27:51.910 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/SNCB/stop_times.csv
+02:27:52.715 [com.ulb.Main.main()] DEBUG com.ulb.parser.Parser - SNCB: 636887 horaires chargés
+02:27:52.716 [com.ulb.Main.main()] DEBUG com.ulb.parser.GTFSLoader - Ouverture de data/GTFS/DELIJN/stop_times.csv
